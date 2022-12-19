@@ -13,7 +13,7 @@ const findSearchedWord = (req, res, next) => {
       const pages = response.data.query.pages;
       const page = Object.values(pages)[0];
       console.log(page);
-      res.send(page);
+      res.send(page.extract);
     });
 
   next();

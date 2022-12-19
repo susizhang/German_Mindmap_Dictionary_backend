@@ -25,10 +25,11 @@ const findSearchedWord = (req, res, next) => {
           return $(this).text();
         })
         .toArray();
-      // .join(" ")
-
+      const filteredBedeutungenToArr = bedeutungenToArr.filter((x) => {
+        return x !== "\n";
+      });
       res.send({
-        bedeutungen: bedeutungenToArr,
+        bedeutungen: filteredBedeutungenToArr,
       });
     });
 

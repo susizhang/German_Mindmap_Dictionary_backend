@@ -22,6 +22,20 @@ const findSearchedWord = (req, res, next) => {
 
         // Get words
 
+        //Get article
+
+        // const Substantiv = $("p[title='Genus:*']").next().html();
+
+        // const substantivToArr = $(Substantiv)
+        //   .map(function (i, el) {
+        //     // this === el
+        //     return $(this).text();
+        //   })
+        //   .toArray();
+        // const filteredSubstantivToArr = substantivToArr.filter((x) => {
+        //   return x !== "\n";
+        // });
+
         // Get bedeutungen data
         const bedeutungen = $("p[title='Sinn und Bezeichnetes (Semantik)']")
           .next()

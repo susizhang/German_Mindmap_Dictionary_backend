@@ -133,19 +133,19 @@ const findSearchedWord = (req, res, next) => {
         });
 
         res.send({
-          bedeutungen: filteredBedeutungenToArr,
+          Bedeutungen: filteredBedeutungenToArr,
 
-          beispiele: filteredBeispieleToArr,
+          Beispiele: filteredBeispieleToArr,
 
-          synonyme: filteredSynonymeToArr,
+          Synonyme: filteredSynonymeToArr,
 
-          sinnverwandteWörter: filteredSinnverwandteWörterToArr,
+          SinnverwandteWörter: filteredSinnverwandteWörterToArr,
 
-          gegenwörter: filteredGegenwörterToArrToArr,
+          Gegenwörter: filteredGegenwörterToArrToArr,
 
-          unterbegriffe: filteredUnterbegriffeToArr,
+          Unterbegriffe: filteredUnterbegriffeToArr,
 
-          wortbildungen: filteredWortbildungenToArr,
+          Wortbildungen: filteredWortbildungenToArr,
         });
       } catch (error) {
         res.status(500).send({ msg: error.message });

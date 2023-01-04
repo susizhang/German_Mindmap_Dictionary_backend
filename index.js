@@ -4,9 +4,11 @@ const wordsRouter = require("./routes/wordsRoutes");
 const app = express();
 const cors = require("cors");
 const userRouter = require("./routes/user");
+const bodyParser = require("body-parser");
 
 const port = process.env.PORT || 5100;
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use("/", wordsRouter);

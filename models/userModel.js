@@ -20,14 +20,16 @@ const userSchema = new Schema({
 //  statics signup method
 
 userSchema.statics.signup = async function (email, password) {
-  //   console.log(" ", email, password);
+  console.log(" ", email, password);
   const exists = await this.findOne({ email });
   if (exists) {
-    throw Error("E-Mail input is empty");
+    throw Error("E-Mail is already used");
   }
+  console.log("before genSalt ");
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
 
+  console.log("before create ");
   const user = await this.create({ email, password: hash });
   return user;
 };

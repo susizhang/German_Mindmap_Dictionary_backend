@@ -40,4 +40,29 @@ const signupUser = async (req, res) => {
   }
 };
 
-module.exports = { signupUser, loginUser };
+const getAllUser = async (req, res) => {
+  try {
+    const getResults = await User.find();
+    res.status(200).json({ getResults });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+const deleteUser = async (req, res) => {
+  try {
+    const {
+      params: { id },
+    } = req;
+
+    const deletedUser = await User.deleteOne({ _id: Object(`${id}`) });
+    deletedUser
+      ? res.status(200).json({ msg: "Delete successfully" })
+      : res.status(404).json({
+          msg: "Delete failed",
+        });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { signupUser, loginUser, getAllUser, deleteUser };

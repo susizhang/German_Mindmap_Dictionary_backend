@@ -20,7 +20,6 @@ const userSchema = new Schema({
 //  statics signup method
 
 userSchema.statics.signup = async function (email, password) {
-  console.log(" ", email, password);
   const exists = await this.findOne({ email });
   if (exists) {
     throw Error("E-Mail is already used");
@@ -35,15 +34,21 @@ userSchema.statics.signup = async function (email, password) {
 
 // statics login method
 userSchema.statics.login = async function (email, password) {
-  const user = await this.findOne({ email });
-
+  //   console.log("userModel ", email, password);
+  const user = await this.findOne({ email }).select("+password");
+  //   console.log("user", user);
   if (!user) {
     throw Error("Incorrect email");
   }
+
+  //   console.log(" user.password", password);
   const match = await bcrypt.compare(password, user.password);
+  //   console.log(" match", match);
+
   if (!match) {
     throw Error("Incorrect password");
   }
+
   return user;
 };
 

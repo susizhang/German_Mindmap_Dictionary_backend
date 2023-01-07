@@ -1,6 +1,4 @@
-const connectDB = require("../DB/connectDB.JS");
 
-connectDB();
 
 const getSingleWords = async (req, res) => {
   try {

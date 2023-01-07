@@ -152,7 +152,7 @@ const findSearchedWord = (req, res, next) => {
       }
     });
 
-  next();
+  //   next();
 };
 
 module.exports = { findSearchedWord };

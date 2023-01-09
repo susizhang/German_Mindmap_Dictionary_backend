@@ -1,10 +1,11 @@
 const SavedWords = require("../models/savedWordsModel");
 
 const addSavedWord = async (req, res) => {
+  console.log(req.body);
   try {
     const newSavedWord = await SavedWords.create({
-      Wort: req.body.wort,
-      Notizen: req.body.notiz,
+      Wort: req.body.Wort,
+      Notizen: req.body.Notizen,
     });
     res.status(200).json(newSavedWord);
   } catch (error) {

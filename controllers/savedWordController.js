@@ -1,7 +1,7 @@
 const SavedWords = require("../models/savedWordsModel");
 
 const addSavedWord = async (req, res) => {
-  console.log(req.body);
+  //   console.log(req.body);
   try {
     const newSavedWord = await SavedWords.create({
       Wort: req.body.Wort,
@@ -12,6 +12,23 @@ const addSavedWord = async (req, res) => {
     res
       .status(400)
       .send({ msg: "Cannot save this word", error: error.message });
+  }
+};
+
+const addNotesToSingleWord = async (req, res) => {
+  try {
+    const newNotes = await SavedWords.updateOne(
+      { _id: req.params.id },
+      { $set: { ...req.body } }
+    );
+    if (newNotes.modifiedCount) {
+      return res.send({ msg: "Add notes successfully" });
+    }
+    res.send({ msg: "Did not add any notes" });
+  } catch (error) {
+    res
+      .status(400)
+      .send({ msg: "Cannot add notes to this word", error: error.message });
   }
 };
 
@@ -45,4 +62,5 @@ module.exports = {
   addSavedWord,
   getAllSavedWords,
   deleteSingleWord,
+  addNotesToSingleWord,
 };

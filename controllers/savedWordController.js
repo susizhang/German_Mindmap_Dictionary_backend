@@ -1,6 +1,4 @@
-
-
-const getSingleWords = async (req, res) => {
+const addSavedWord = async (req, res) => {
   try {
   } catch (error) {
     res
@@ -10,5 +8,5 @@ const getSingleWords = async (req, res) => {
 };
 
 module.exports = {
-  getSingleWords,
+  addSavedWord,
 };

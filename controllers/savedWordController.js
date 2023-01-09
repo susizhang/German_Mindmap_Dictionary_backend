@@ -29,7 +29,20 @@ const getAllSavedWords = async (req, res) => {
   }
 };
 
+const deleteSingleWord = async (req, res) => {
+  try {
+    const deletedWord = await SavedWords.deleteOne({ _id: req.params.id });
+    res.status(200).send({ msg: "Delete word successfully" });
+  } catch (error) {
+    res.status(400).send({
+      msg: "Can not delete this word",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   addSavedWord,
   getAllSavedWords,
+  deleteSingleWord,
 };

@@ -148,11 +148,11 @@ const findSearchedWord = (req, res, next) => {
           Wortbildungen: filteredWortbildungenToArr,
         });
       } catch (error) {
-        res.status(500).send({ msg: error.message });
+        res
+          .status(400)
+          .send({ msg: "Can not find this word ", error: error.message });
       }
     });
-
-  //   next();
 };
 
 module.exports = { findSearchedWord };

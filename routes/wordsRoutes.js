@@ -15,7 +15,7 @@ wordsRouter.route("/word/allWords").get(requireAuth, getAllSavedWords);
 wordsRouter.route("/word/save").post(requireAuth, addSavedWord);
 wordsRouter
   .route("/word/:id")
-  .delete(deleteSingleWord)
+  .delete(requireAuth, deleteSingleWord)
   .patch(addNotesToSingleWord);
 
 module.exports = wordsRouter;

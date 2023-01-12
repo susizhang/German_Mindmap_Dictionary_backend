@@ -3,7 +3,6 @@ const SavedWords = require("../models/savedWordsModel");
 const addSavedWord = async (req, res) => {
   //   console.log(req.body);
   try {
-    // const user_id = req.user._id;
     const newSavedWord = await SavedWords.create({
       Wort: req.body.Wort,
       Notizen: req.body.Notizen,

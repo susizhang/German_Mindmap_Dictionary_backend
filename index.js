@@ -12,13 +12,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 const connectDB = require("./DB/connectDB.JS");
-connectDB();
 
 app.use("/", wordsRouter);
 app.use("/user", userRouter);
 
 app.use("*", (req, res) => res.sendStatus(404));
 
-app.listen(port, () =>
-  console.log(`Server is running on  http://localhost:${port}`)
-);
+connectDB().then(() => {
+  app.listen(port, () =>
+    console.log(`Server is running on  http://localhost:${port}`)
+  );
+});

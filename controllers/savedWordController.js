@@ -3,10 +3,11 @@ const SavedWords = require("../models/savedWordsModel");
 const addSavedWord = async (req, res) => {
   //   console.log(req.body);
   try {
+    // const user_id = req.user._id;
     const newSavedWord = await SavedWords.create({
       Wort: req.body.Wort,
       Notizen: req.body.Notizen,
-      userID: req.user._id,
+      user_id: req.user._id,
     });
     res.status(200).json(newSavedWord);
   } catch (error) {
@@ -35,7 +36,10 @@ const addNotesToSingleWord = async (req, res) => {
 
 const getAllSavedWords = async (req, res) => {
   try {
-    const allSavedWords = await SavedWords.find().sort({ createdAt: -1 });
+    const user_id = req.user._id;
+    const allSavedWords = await SavedWords.find({ user_id }).sort({
+      createdAt: -1,
+    });
     res.status(200).send({
       msg: "Get all saved Words successfully",
       SavedWordsList: allSavedWords,

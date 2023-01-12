@@ -6,7 +6,7 @@ const wordsSchema = new Schema(
   {
     Wort: String,
     Notizen: String,
-    userID: {
+    user_id: {
       type: String,
       required: true,
     },

@@ -6,6 +6,7 @@ const addSavedWord = async (req, res) => {
     const newSavedWord = await SavedWords.create({
       Wort: req.body.Wort,
       Notizen: req.body.Notizen,
+      userID: req.user._id,
     });
     res.status(200).json(newSavedWord);
   } catch (error) {

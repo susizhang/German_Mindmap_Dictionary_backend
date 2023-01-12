@@ -17,6 +17,8 @@ connectDB();
 app.use("/", wordsRouter);
 app.use("/user", userRouter);
 
+app.use("*", (req, res) => res.sendStatus(404));
+
 app.listen(port, () =>
   console.log(`Server is running on  http://localhost:${port}`)
 );
